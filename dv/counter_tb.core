@@ -1,0 +1,30 @@
+CAPI=2:
+
+name: "bci:dv:counter:1.0"
+description: "counter DV sim target"
+
+filesets:
+  files_rtl:
+    depend:
+      - bci:ip:counter:1.0
+  files_dv:
+    files:
+      - tb/tb.sv
+    file_type: systemVerilogSource
+  files_emu:
+    files:
+      - tb/emu_tb.sv
+      - tb/bfm.sv
+    file_type: systemVerilogSource
+
+targets:
+  sim:
+    toplevel: counter_tb
+    filesets:
+      - files_rtl
+      - files_dv
+  emu:
+    toplevel: counter_tb
+    filesets:
+      - files_rtl
+      - files_emu
